@@ -3,8 +3,8 @@
     <!-- Extend the portal ticket detail view to display priority -->
     <template id="portal_ticket_detail_priority" name="Portal Ticket Detail Priority" inherit_id="helpdesk_mgmt.portal_helpdesk_ticket_page">
         <!-- Add priority field after the Attachments section -->
-        <xpath expr="//strong[text()='Attachments:']/.." position="after">
-            <div class="mt-2">
+        <xpath expr="//div[@class='col-12 col-md-6 text-right'][@name='portal_ticket_col_1']" position="inside">
+            <div class="mt-3">
                 <strong>Priority:</strong>
                 <div>
                     <t t-if="ticket.priority == '0'">
