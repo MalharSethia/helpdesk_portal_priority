@@ -2,11 +2,11 @@
 <odoo>
     <!-- Extend the portal ticket detail view to display priority -->
     <template id="portal_ticket_detail_priority" name="Portal Ticket Detail Priority" inherit_id="helpdesk_mgmt.portal_helpdesk_ticket_page">
-        <!-- Add priority field after the Attachments section -->
-        <xpath expr="//div[@class='col-12 col-md-6 text-right'][@name='portal_ticket_col_1']" position="inside">
-            <div class="mt-3">
-                <strong>Priority:</strong>
-                <div>
+        <!-- Add priority field after the Category field -->
+        <xpath expr="//div[contains(@class, 'row') and .//strong[text()='Category:']]" position="after">
+            <div class="row mb-2">
+                <div class="col-12 col-md-6">
+                    <strong>Priority:</strong>
                     <t t-if="ticket.priority == '0'">
                         <span class="badge badge-pill bg-secondary">Low</span>
                     </t>
@@ -29,8 +29,8 @@
     
     <!-- Extend the portal ticket creation form -->
     <template id="portal_ticket_form_priority" name="Portal Ticket Form Priority" inherit_id="helpdesk_mgmt.portal_create_ticket">
-        <!-- Add priority field after the category field with dropdown below label -->
-        <xpath expr="//div[contains(@class, 'form-group') and .//select[@name='category']]" position="after">
+        <!-- Add priority field after the attachments field with dropdown below label -->
+        <xpath expr="//div[contains(@class, 'form-group') and .//input[@name='attachment']]" position="after">
             <div class="form-group">
                 <label class="col-form-label" for="priority">Priority *</label>
                 <div>
